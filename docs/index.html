@@ -117,7 +117,7 @@
     <div class="license-plate">车牌号：川RL134F</div>
     <div class="location">到访校区：北碚校区 </div>
     <div class="divider"></div>
-    <div class="deadline">进校截止日期：2020年12月31日</div>
+    <div class="deadline">进校截止日期：<span id="deadLine"></span></div>
   </div>
   <div class="footer">西南大学版权所有(渝ICP 06005063号-4)</div>
 </body>
@@ -137,6 +137,18 @@
     setTimeout(getNowDate, 1000);
   }
   getNowDate();
+
+  function getDeadLine() {
+    //在当前日期的基础上加上2天，格式为yyyy年mm月dd日
+    var date = new Date();
+    date.setDate(date.getDate() + 2);
+    var year = date.getFullYear();
+    var month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+    var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+    var nowDate = year + "年" + month + "月" + day + "日";
+    document.getElementById("deadLine").innerHTML = nowDate;
+  }
+  getDeadLine();
 </script>
 
 </html>
